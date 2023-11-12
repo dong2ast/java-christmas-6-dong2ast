@@ -3,25 +3,20 @@ package christmas.domain;
 import christmas.Enum.Badge;
 import christmas.Enum.Event;
 import christmas.Enum.Menu;
+import christmas.Enum.MenuType;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     private final List<Menu> orderMenu = new ArrayList<>();
-    private int date;
+    private final List<Event> event = new ArrayList<>();
     private int discountBeforePrice;
-    private Boolean freebie;
-    private List<Event> event;
     private int eventPrice;
     private int paymentPrice;
     private Badge badge;
 
     public List<Menu> getOrderMenu() {
         return orderMenu;
-    }
-
-    public int getDate() {
-        return date;
     }
 
     public void calculateDiscountBeforePrice() {
@@ -32,10 +27,6 @@ public class Order {
 
     public int getDiscountBeforePrice() {
         return discountBeforePrice;
-    }
-
-    public Boolean getFreebie() {
-        return freebie;
     }
 
     public List<Event> getEvent() {

@@ -13,11 +13,11 @@ public class OutputView {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
     }
 
-    public void printOrder(Order order) {
-        System.out.println("12월 " + order.getDate() + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+    public void printOrder(Order order, int date) {
+        System.out.println("12월 " + date + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
         printMenu(order);
         printDiscountBeforePrice(order);
-        printFreebie(order);
+        printFreebie();
         printEvent(order);
         printEventPrice(order);
         printPaymentPrice(order);
@@ -38,10 +38,10 @@ public class OutputView {
         System.out.println(decimalFormat.format(order.getDiscountBeforePrice()) + "원");
     }
 
-    private void printFreebie(Order order) {
+    private void printFreebie() {
         System.out.println("\n<증정 메뉴>");
 
-        if (order.getFreebie()) {
+        if (Event.FREEBIE.getCheck()) {
             System.out.println(Menu.FREEBIE.getName() + " " + Menu.FREEBIE.getOrderCount() + "개");
             return;
         }
