@@ -10,7 +10,7 @@ public enum Event {
     ;
 
     private final String title;
-    private final Integer rate;
+    private Integer rate;
     private boolean check;
 
     Event(String title, Integer rate, boolean check) {
@@ -32,4 +32,6 @@ public enum Event {
     public void check() {
         this.check = true;
     }
+
+    public void changeRate(Integer rate) { this.rate = rate; }
 }
