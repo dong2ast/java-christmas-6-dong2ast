@@ -24,6 +24,12 @@ public class Order {
         return date;
     }
 
+    public void calculateDiscountBeforePrice() {
+        for (Menu menu : orderMenu) {
+            this.discountBeforePrice += (menu.getPrice() * menu.getOrderCount());
+        }
+    }
+
     public int getDiscountBeforePrice() {
         return discountBeforePrice;
     }
