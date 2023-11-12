@@ -1,7 +1,8 @@
-package christmas.util;
+package christmas.util.interact;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.Enum.common.ErrorStatus;
+import christmas.util.ExceptionModule;
 import java.util.Arrays;
 import java.util.List;
 

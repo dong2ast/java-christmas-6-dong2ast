@@ -1,10 +1,11 @@
-package christmas.util;
+package christmas.util.interact;
 
 import static christmas.util.ExceptionModule.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.Enum.Menu;
 import christmas.domain.Order;
+import christmas.util.ExceptionModule;
 import java.util.ArrayList;
 import java.util.List;
 

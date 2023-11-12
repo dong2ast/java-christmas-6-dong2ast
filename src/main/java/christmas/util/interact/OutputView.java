@@ -1,4 +1,4 @@
-package christmas.util;
+package christmas.util.interact;
 
 public class OutputView {
     public void startMessage() {

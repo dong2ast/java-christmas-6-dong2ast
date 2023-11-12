@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.Order;
-import christmas.util.InputView;
+import christmas.util.interact.InputView;
 
 public class InputService {
     private final InputView inputView;
