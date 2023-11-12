@@ -27,7 +27,7 @@ public class SplitModule {
     }
 
     public int checkCount(List<Integer> count, String text) throws IllegalArgumentException{
-        Integer parseCount = ExceptionModule.checkParseIntException(text);
+        Integer parseCount = ExceptionModule.checkOrderParseIntException(text);
         ExceptionModule.checkOrderCount(parseCount);
         count.add(parseCount);
         return parseCount;

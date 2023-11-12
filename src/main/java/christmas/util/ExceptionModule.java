@@ -14,11 +14,19 @@ public class ExceptionModule {
     private static final Integer MIN_DATE = 1;
     private static final Integer MAX_DATE = 31;
 
-    public static Integer checkParseIntException(String consoleRead) throws IllegalArgumentException{
+    public static Integer checkDayParseIntException(String consoleRead) throws IllegalArgumentException{
         try {
             return Integer.parseInt(consoleRead);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorStatus.PARSE_INT_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorStatus.DAY_PARSE_INT_ERROR.getMessage());
+        }
+    }
+
+    public static Integer checkOrderParseIntException(String consoleRead) throws IllegalArgumentException{
+        try {
+            return Integer.parseInt(consoleRead);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorStatus.ORDER_PARSE_INT_ERROR.getMessage());
         }
     }
 
