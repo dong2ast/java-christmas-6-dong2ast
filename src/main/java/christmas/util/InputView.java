@@ -11,7 +11,7 @@ public class InputView {
         return date;
     }
 
-    public Integer checkParseIntException(String consoleRead) throws IllegalArgumentException{
+    private Integer checkParseIntException(String consoleRead) throws IllegalArgumentException{
         try {
             return Integer.parseInt(consoleRead);
         } catch (NumberFormatException e) {
@@ -19,7 +19,7 @@ public class InputView {
         }
     }
 
-    public void checkNumBoundary(Integer num) throws IllegalArgumentException{
+    private void checkNumBoundary(Integer num) throws IllegalArgumentException{
         if (num < 1 || num > 31) {
             throw new IllegalArgumentException(ErrorStatus.DATE_BOUNDARY_ERROR.getMessage());
         }
