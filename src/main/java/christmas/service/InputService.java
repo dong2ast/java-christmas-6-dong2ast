@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.Order;
 import christmas.util.InputView;
 
 public class InputService {
@@ -18,4 +19,15 @@ public class InputService {
             }
         }
     }
+
+    public Order getOrder() {
+        while (true) {
+            try {
+                return inputView.readOrder();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }
