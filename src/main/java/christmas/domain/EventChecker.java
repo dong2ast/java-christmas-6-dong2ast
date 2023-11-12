@@ -57,6 +57,6 @@ public class EventChecker {
     }
 
     public int getDay() {
-        return this.visitLocalDate.getDayOfMonth();
+        return this.visitLocalDate.getDayOfMonth()-1;
     }
 }
