@@ -8,6 +8,7 @@ public class EventChecker {
     private final int EVENT_MONTH = 12;
     private final int CHRISTMAS_DAY = 25;
     private final int FREEBIE_PRICE = 120000;
+    private final int MIN_EVENT_ORDER_PRICE = 10000;
 
     private Boolean christmasEvent = false;
     private Boolean weekdayEvent = false;
@@ -19,10 +20,16 @@ public class EventChecker {
 
     public EventChecker(int visitDate, int discountBeforePrice) {
         this.visitLocalDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, visitDate);
-        checkChristmasEvent(visitDate);
-        checkWeekendEvent();
-        checkSpecialEvent();
-        checkFreebieEvent(discountBeforePrice);
+        if (checkMinEventOrderPrice(discountBeforePrice)){
+            checkChristmasEvent(visitDate);
+            checkWeekendEvent();
+            checkSpecialEvent();
+            checkFreebieEvent(discountBeforePrice);
+        }
+    }
+
+    private boolean checkMinEventOrderPrice(int discountBeforePrice) {
+        return discountBeforePrice >= MIN_EVENT_ORDER_PRICE;
     }
 
     private void checkChristmasEvent(int visitDate) {
