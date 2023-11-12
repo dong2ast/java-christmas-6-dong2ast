@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.Enum.Menu;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
@@ -56,6 +57,7 @@ public class EventChecker {
     private void checkFreebieEvent(int discountBeforePrice) {
         if (discountBeforePrice >= FREEBIE_PRICE) {
             this.freebieEvent = true;
+            Menu.FREEBIE.order(1);
         }
     }
 
