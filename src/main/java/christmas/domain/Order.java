@@ -13,7 +13,7 @@ public class Order {
     private Boolean freebie;
     private List<Event> event;
     private int eventPrice;
-    private int discountPrice;
+    private int paymentPrice;
     private Badge badge;
 
     public List<Menu> getOrderMenu() {
@@ -46,8 +46,8 @@ public class Order {
         return eventPrice;
     }
 
-    public int getDiscountPrice() {
-        return discountPrice;
+    public int getPaymentPrice() {
+        return paymentPrice;
     }
 
     public Badge getBadge() {
