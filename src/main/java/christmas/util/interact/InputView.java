@@ -36,8 +36,8 @@ public class InputView {
         List<String> menuName = new ArrayList<>();
         List<Integer> count = new ArrayList<>();
         int total = 0;
-
         for (String s : splitOrder) {
+            ExceptionModule.checkHyphen(s);
             String[] split = s.split("-");
             splitModule.checkMenuName(menuName, split[0]);
             total += splitModule.checkCount(count, split[1]);

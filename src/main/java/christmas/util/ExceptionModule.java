@@ -48,4 +48,10 @@ public class ExceptionModule {
         }
         throw new IllegalArgumentException(ErrorStatus.ONLY_DRINK_ERROR.getMessage());
     }
+
+    public static void checkHyphen(String s) {
+        if (s.chars().filter(t -> t == '-').count() != 1) {
+            throw new IllegalArgumentException(ErrorStatus.ILLEGAL_FORMAT_ERROR.getMessage());
+        }
+    }
 }
