@@ -1,4 +1,4 @@
-package christmas.Enum;
+package christmas.Enum.menu;
 
 public enum Main {
     T_BORN_STEAK("티본스테이크", 55000, 0),

@@ -1,16 +1,15 @@
-package christmas.Enum;
+package christmas.Enum.menu;
 
-public enum Drink {
-    ZERO_COKE("제로콜라", 3000, 0),
-    RED_WINE("레드와인", 60000, 0),
-    CHAMPAGNE("샴페인", 25000, 0)
+public enum Dessert {
+    CHOCO_CAKE("초코케이크", 15000, 0),
+    ICE_CREAM("아이스크림", 5000, 0),
     ;
 
     private final String name;
     private final Integer price;
     private Integer orderCount;
 
-    Drink(String name, Integer price, Integer orderCount) {
+    Dessert(String name, Integer price, Integer orderCount) {
         this.name = name;
         this.price = price;
         this.orderCount = orderCount;
@@ -32,10 +31,10 @@ public enum Drink {
         return orderCount;
     }
 
-    public static Drink nameOf(String name) {
-        for (Drink drink : Drink.values()) {
-            if (drink.getName().equals(name)) {
-                return drink;
+    public static Dessert nameOf(String name) {
+        for (Dessert dessert : Dessert.values()) {
+            if (dessert.getName().equals(name)) {
+                return dessert;
             }
         }
         return null;
