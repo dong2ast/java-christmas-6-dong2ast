@@ -25,7 +25,7 @@ public class OutputView {
     }
 
     private void printMenu(Order order) {
-        System.out.println("\n<주문메뉴>");
+        System.out.println("\n<주문 메뉴>");
 
         for (Menu menu : order.getOrderMenu()) {
             System.out.println(menu.getName() + " " + menu.getOrderCount() + "개");
@@ -33,7 +33,7 @@ public class OutputView {
     }
 
     private void printDiscountBeforePrice(Order order) {
-        System.out.println("\n<할인 전 총 주문 금액>");
+        System.out.println("\n<할인 전 총주문 금액>");
 
         System.out.println(decimalFormat.format(order.getDiscountBeforePrice()) + "원");
     }
