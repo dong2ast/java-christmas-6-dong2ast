@@ -1,8 +1,13 @@
 package christmas.util;
 
 import christmas.Enum.common.ErrorStatus;
+import java.util.List;
 
 public class ExceptionModule {
+
+    private static final List<String> menuExceptDrink = List.of(
+            "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림"
+    );
 
     private static final Integer MIN_ORDER = 1;
     private static final Integer MAX_ORDER = 20;
@@ -32,5 +37,14 @@ public class ExceptionModule {
         if (totalOrderCount > MAX_ORDER) {
             throw new IllegalArgumentException(ErrorStatus.OVER_MAX_ORDER_ERROR.getMessage());
         }
+    }
+
+    public static void checkOnlyDrink(List<String> menuName) {
+        for (String s : menuName) {
+            if (menuExceptDrink.contains(s)) {
+                return;
+            }
+        }
+        throw new IllegalArgumentException(ErrorStatus.ONLY_DRINK_ERROR.getMessage());
     }
 }

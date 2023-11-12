@@ -29,10 +29,10 @@ public class InputView {
 
         List<String> splitOrder = splitModule.splitOrder();
 
-        return splitMenuCount(splitOrder);
+        return splitMenuAndCount(splitOrder);
     }
 
-    private Order splitMenuCount(List<String> splitOrder) throws IllegalArgumentException {
+    private Order splitMenuAndCount(List<String> splitOrder) throws IllegalArgumentException {
         List<String> menuName = new ArrayList<>();
         List<Integer> count = new ArrayList<>();
         int total = 0;
@@ -42,6 +42,7 @@ public class InputView {
             total += splitModule.checkCount(count, split[1]);
         }
         ExceptionModule.checkMaxOrderCount(total);
+        ExceptionModule.checkOnlyDrink(menuName);
 
         return makeOrder(menuName, count);
     }
