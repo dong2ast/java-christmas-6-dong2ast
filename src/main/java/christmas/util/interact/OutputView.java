@@ -51,6 +51,10 @@ public class OutputView {
     private void printEvent(Order order) {
         System.out.println("\n<혜택 내역>");
 
+        if (order.getEvent().size() == 0) {
+            System.out.println("없음");
+            return;
+        }
         for (Event e : order.getEvent()) {
             System.out.println(e.getTitle() + ": -" + decimalFormat.format(e.getRate()) + "원");
         }
@@ -59,6 +63,10 @@ public class OutputView {
     private void printEventPrice(Order order) {
         System.out.println("\n<총혜택 금액>");
 
+        if (order.getEventPrice() == 0) {
+            System.out.println("0원");
+            return;
+        }
         System.out.println("-" + decimalFormat.format(order.getEventPrice()) + "원");
     }
 
@@ -71,6 +79,10 @@ public class OutputView {
     private void printBadge(Order order) {
         System.out.println("\n<12월 이벤트 배지>");
 
+        if (order.getBadge() == null) {
+            System.out.println("없음");
+            return;
+        }
         System.out.println(order.getBadge().getTitle());
     }
 }
