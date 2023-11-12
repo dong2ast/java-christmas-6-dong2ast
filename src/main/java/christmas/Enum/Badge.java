@@ -8,18 +8,18 @@ public enum Badge {
     ;
 
     private final String title;
-    private final Integer totalPrice;
+    private final Integer benefit;
 
-    Badge(String title, Integer totalPrice) {
+    Badge(String title, Integer benefit) {
         this.title = title;
-        this.totalPrice = totalPrice;
+        this.benefit = benefit;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Integer getTotalPrice() {
-        return totalPrice;
+    public Integer getBenefit() {
+        return benefit;
     }
 }
