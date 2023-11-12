@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.Enum.Event;
 import christmas.Enum.Menu;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -10,12 +11,6 @@ public class EventChecker {
     private final int CHRISTMAS_DAY = 25;
     private final int FREEBIE_PRICE = 120000;
     private final int MIN_EVENT_ORDER_PRICE = 10000;
-
-    private Boolean christmasEvent = false;
-    private Boolean weekdayEvent = false;
-    private Boolean weekendEvent = false;
-    private Boolean specialEvent = false;
-    private Boolean freebieEvent = false;
 
     private final LocalDate visitLocalDate;
 
@@ -35,49 +30,33 @@ public class EventChecker {
 
     private void checkChristmasEvent(int visitDate) {
         if (visitDate <= CHRISTMAS_DAY) {
-            this.christmasEvent = true;
+            Event.CHRISTMAS.check();
         }
     }
 
     private void checkWeekdayAndWeekendEvent() {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
         if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
-            this.weekendEvent = true;
+            Event.WEEKEND.check();
         }
-        this.weekdayEvent = true;
+        Event.WEEKDAY.check();
     }
 
     private void checkSpecialEvent() {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
         if (visitLocalDate.getDayOfMonth() == CHRISTMAS_DAY || dayOfWeek == DayOfWeek.SUNDAY) {
-            this.specialEvent = true;
+            Event.SPECIAL.check();
         }
     }
 
     private void checkFreebieEvent(int discountBeforePrice) {
         if (discountBeforePrice >= FREEBIE_PRICE) {
-            this.freebieEvent = true;
+            Event.FREEBIE.check();
             Menu.FREEBIE.order(1);
         }
     }
 
-    public Boolean getChristmasEvent() {
-        return christmasEvent;
-    }
-
-    public Boolean getWeekdayEvent() {
-        return weekdayEvent;
-    }
-
-    public Boolean getWeekendEvent() {
-        return weekendEvent;
-    }
-
-    public Boolean getSpecialEvent() {
-        return specialEvent;
-    }
-
-    public Boolean getFreebieEvent() {
-        return freebieEvent;
+    public int getDay() {
+        return this.visitLocalDate.getDayOfMonth();
     }
 }
