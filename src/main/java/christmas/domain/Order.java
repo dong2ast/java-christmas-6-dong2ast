@@ -7,7 +7,7 @@ import java.util.List;
 public class Order {
     private final List<Menu> menu = new ArrayList<>();
 
-    public List<Menu> getMenu() {
-        return menu;
+    public List<Menu> getOrderMenu() {
+        return orderMenu;
     }
 }

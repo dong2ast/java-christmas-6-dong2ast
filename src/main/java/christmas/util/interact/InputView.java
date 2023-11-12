@@ -52,7 +52,7 @@ public class InputView {
         for (int i = 0; i < menuName.size(); i++) {
             Menu menu = Menu.nameOf(menuName.get(i));
             menu.order(count.get(i));
-            order.getMenu().add(menu);
+            order.getOrderMenu().add(menu);
         }
         return order;
     }
