@@ -23,7 +23,7 @@ public class EventChecker {
         this.visitLocalDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, visitDate);
         if (checkMinEventOrderPrice(discountBeforePrice)){
             checkChristmasEvent(visitDate);
-            checkWeekendEvent();
+            checkWeekdayAndWeekendEvent();
             checkSpecialEvent();
             checkFreebieEvent(discountBeforePrice);
         }
@@ -39,7 +39,7 @@ public class EventChecker {
         }
     }
 
-    private void checkWeekendEvent() {
+    private void checkWeekdayAndWeekendEvent() {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
         if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
             this.weekendEvent = true;
