@@ -1,6 +1,7 @@
 package christmas.Enum;
 
 public enum Event {
+    NONE("없음", 0),
     CHRISTMAS("크리스마스 디데이 할인", 100),
     WEEKDAY("평일 할인", 2023),
     WEEKEND("주말 할인", 2023),
