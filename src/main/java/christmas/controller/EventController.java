@@ -20,7 +20,6 @@ public class EventController {
 
         int visitDate = inputService.getVisitDate();
         Order order = inputService.getOrder();
-        order.calculateDiscountBeforePrice();
 
         EventChecker eventChecker = new EventChecker(visitDate, order.getDiscountBeforePrice());
         new EventPlaner(order, eventChecker);

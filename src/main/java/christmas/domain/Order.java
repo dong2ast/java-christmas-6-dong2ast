@@ -21,13 +21,14 @@ public class Order {
             menu.order(count.get(i));
             this.orderMenu.add(menu);
         }
+        calculateDiscountBeforePrice();
     }
 
     public List<Menu> getOrderMenu() {
         return orderMenu;
     }
 
-    public void calculateDiscountBeforePrice() {
+    private void calculateDiscountBeforePrice() {
         for (Menu menu : orderMenu) {
             this.discountBeforePrice += (menu.getPrice() * menu.getOrderCount());
         }
