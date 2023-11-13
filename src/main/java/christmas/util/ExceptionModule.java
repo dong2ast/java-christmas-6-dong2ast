@@ -9,6 +9,10 @@ public class ExceptionModule {
             "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림"
     );
 
+    private static final List<String> MENU_NAME = List.of(
+            "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림", "제로콜라", "레드와인", "샴페인"
+    );
+
     private static final Integer MIN_ORDER = 1;
     private static final Integer MAX_ORDER = 20;
     private static final Integer MIN_DATE = 1;
@@ -36,14 +40,26 @@ public class ExceptionModule {
         }
     }
 
+    public static void checkMenuExist(String text) {
+        if (!MENU_NAME.contains(text)){
+            throw new IllegalArgumentException(ErrorStatus.NO_MENU_ERROR.getMessage());
+        }
+    }
+
+    public static void checkMenuDub(List<String> menu, String text) {
+        if (menu.contains(text)) {
+            throw new IllegalArgumentException(ErrorStatus.MENU_DUP_ERROR.getMessage());
+        }
+    }
+
     public static void checkOrderCount(Integer parseCount) {
         if (parseCount < MIN_ORDER) {
             throw new IllegalArgumentException(ErrorStatus.ORDER_COUNT_ERROR.getMessage());
         }
     }
 
-    public static void checkMaxOrderCount(Integer totalOrderCount) {
-        if (totalOrderCount > MAX_ORDER) {
+    public static void checkMaxOrderCount(List<Integer> count) {
+        if (count.stream().mapToInt(i -> i).sum() > MAX_ORDER) {
             throw new IllegalArgumentException(ErrorStatus.OVER_MAX_ORDER_ERROR.getMessage());
         }
     }
