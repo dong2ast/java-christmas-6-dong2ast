@@ -2,12 +2,16 @@ package christmas.service;
 
 import christmas.domain.Order;
 import christmas.util.interact.InputView;
+import christmas.util.interact.SplitModule;
+import java.util.List;
 
 public class InputService {
     private final InputView inputView;
+    private final SplitModule splitModule;
 
     public InputService() {
         this.inputView = new InputView();
+        this.splitModule = new SplitModule();
     }
 
     public int getVisitDate() {
@@ -23,7 +27,8 @@ public class InputService {
     public Order getOrder() {
         while (true) {
             try {
-                return inputView.readOrder();
+                List<String> readOrder = inputView.readOrder();
+                return splitModule.splitMenuAndCount(readOrder);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

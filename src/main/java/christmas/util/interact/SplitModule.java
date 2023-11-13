@@ -1,9 +1,10 @@
 package christmas.util.interact;
 
-import camp.nextstep.edu.missionutils.Console;
+import christmas.Enum.Menu;
 import christmas.Enum.common.ErrorStatus;
+import christmas.domain.Order;
 import christmas.util.ExceptionModule;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SplitModule {
@@ -12,8 +13,34 @@ public class SplitModule {
             "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림", "제로콜라", "레드와인", "샴페인"
     );
 
-    public List<String> splitOrder() throws IllegalArgumentException {
-        return Arrays.stream(Console.readLine().split(",")).toList();
+    public Order splitMenuAndCount(List<String> splitOrder) throws IllegalArgumentException {
+        List<String> menuName = new ArrayList<>();
+        List<Integer> count = new ArrayList<>();
+        int total = 0;
+
+        for (String s : splitOrder) {
+            ExceptionModule.checkHyphen(s);
+            String[] split = s.split("-");
+            checkMenuName(menuName, split[0]);
+            total += checkCount(count, split[1]);
+        }
+
+        ExceptionModule.checkMaxOrderCount(total);
+        ExceptionModule.checkOnlyDrink(menuName);
+
+        return makeOrder(menuName, count);
+    }
+
+    private Order makeOrder(List<String> menuName, List<Integer> count) {
+        Order order = new Order();
+
+        for (int i = 0; i < menuName.size(); i++) {
+            Menu menu = Menu.nameOf(menuName.get(i));
+            menu.order(count.get(i));
+            order.getOrderMenu().add(menu);
+        }
+
+        return order;
     }
 
     public void checkMenuName(List<String> menu, String text) throws IllegalArgumentException{
