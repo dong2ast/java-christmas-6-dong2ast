@@ -36,6 +36,7 @@ public class EventChecker {
 
     private void checkWeekdayAndWeekendEvent() {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
+
         if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
             Event.WEEKEND.check();
         }
@@ -44,6 +45,7 @@ public class EventChecker {
 
     private void checkSpecialEvent() {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
+
         if (visitLocalDate.getDayOfMonth() == CHRISTMAS_DAY || dayOfWeek == DayOfWeek.SUNDAY) {
             Event.SPECIAL.check();
         }

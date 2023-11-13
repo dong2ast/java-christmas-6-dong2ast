@@ -38,11 +38,14 @@ public class Order {
         if (price == 0) {
             return;
         }
+
         this.event.add(event);
         this.eventPrice += price;
+
         if (event.equals(Event.FREEBIE)) {
             return;
         }
+
         this.paymentPrice -= price;
         event.changeRate(price);
     }

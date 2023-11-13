@@ -55,6 +55,7 @@ public class OutputView {
             System.out.println("없음");
             return;
         }
+
         for (Event e : order.getEvent()) {
             System.out.println(e.getTitle() + ": -" + decimalFormat.format(e.getRate()) + "원");
         }
@@ -67,6 +68,7 @@ public class OutputView {
             System.out.println("0원");
             return;
         }
+
         System.out.println("-" + decimalFormat.format(order.getEventPrice()) + "원");
     }
 
@@ -83,6 +85,7 @@ public class OutputView {
             System.out.println("없음");
             return;
         }
+
         System.out.println(order.getBadge().getTitle());
     }
 }
