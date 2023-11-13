@@ -5,7 +5,7 @@ import christmas.Enum.Menu;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class EventChecker {
+public class EventTargetChecker {
     private final int EVENT_YEAR = 2023;
     private final int EVENT_MONTH = 12;
     private final int CHRISTMAS_DAY = 25;
@@ -14,7 +14,7 @@ public class EventChecker {
 
     private final LocalDate visitLocalDate;
 
-    public EventChecker(int visitDate, int discountBeforePrice) {
+    public EventTargetChecker(int visitDate, int discountBeforePrice) {
         this.visitLocalDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, visitDate);
         if (checkMinEventOrderPrice(discountBeforePrice)){
             checkChristmasEvent(visitDate);

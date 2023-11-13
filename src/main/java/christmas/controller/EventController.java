@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.EventChecker;
+import christmas.domain.EventTargetChecker;
 import christmas.domain.EventPlaner;
 import christmas.domain.Order;
 import christmas.service.InputService;
@@ -21,8 +21,8 @@ public class EventController {
         int visitDate = inputService.getVisitDate();
         Order order = inputService.getOrder();
 
-        EventChecker eventChecker = new EventChecker(visitDate, order.getDiscountBeforePrice());
-        new EventPlaner(order, eventChecker);
+        EventTargetChecker eventTargetChecker = new EventTargetChecker(visitDate, order.getDiscountBeforePrice());
+        new EventPlaner(order, eventTargetChecker);
 
         outputView.printOrder(order, visitDate);
     }

@@ -7,20 +7,20 @@ public class EventPlaner {
 
     private final int CHRISTMAS_EVENT_BASE_PRICE = 1000;
 
-    public EventPlaner(Order order, EventChecker eventChecker) {
-        calculateChristmasEvent(order, eventChecker);
+    public EventPlaner(Order order, EventTargetChecker eventTargetChecker) {
+        calculateChristmasEvent(order, eventTargetChecker);
         calculateWeekdayAndWeekendEvent(order);
         calculateSpecialEvent(order);
         calculateFreebieEvent(order);
         calculateBadge(order);
     }
 
-    private void calculateChristmasEvent(Order order, EventChecker eventChecker) {
+    private void calculateChristmasEvent(Order order, EventTargetChecker eventTargetChecker) {
         if (!Event.CHRISTMAS.getCheck()) {
             return;
         }
         order.addEventStatus(Event.CHRISTMAS,
-                CHRISTMAS_EVENT_BASE_PRICE + eventChecker.getDay() * Event.CHRISTMAS.getRate());
+                CHRISTMAS_EVENT_BASE_PRICE + eventTargetChecker.getDay() * Event.CHRISTMAS.getRate());
     }
 
     private void calculateWeekdayAndWeekendEvent(Order order) {
