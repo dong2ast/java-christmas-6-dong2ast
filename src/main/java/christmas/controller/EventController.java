@@ -1,15 +1,16 @@
-package christmas.service;
+package christmas.controller;
 
 import christmas.domain.EventChecker;
 import christmas.domain.EventPlaner;
 import christmas.domain.Order;
+import christmas.service.InputService;
 import christmas.util.interact.OutputView;
 
-public class EventService {
+public class EventController {
     private final InputService inputService;
     private final OutputView outputView;
 
-    public EventService() {
+    public EventController() {
         this.inputService = new InputService();
         this.outputView = new OutputView();
     }
