@@ -15,6 +15,14 @@ public class Order {
     private int paymentPrice;
     private Badge badge = Badge.NONE;
 
+    public Order(List<String> menuName, List<Integer> count) {
+        for (int i = 0; i < menuName.size(); i++) {
+            Menu menu = Menu.nameOf(menuName.get(i));
+            menu.order(count.get(i));
+            this.orderMenu.add(menu);
+        }
+    }
+
     public List<Menu> getOrderMenu() {
         return orderMenu;
     }

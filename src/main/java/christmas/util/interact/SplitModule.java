@@ -1,6 +1,5 @@
 package christmas.util.interact;
 
-import christmas.Enum.Menu;
 import christmas.Enum.common.ErrorStatus;
 import christmas.domain.Order;
 import christmas.util.ExceptionModule;
@@ -28,19 +27,7 @@ public class SplitModule {
         ExceptionModule.checkMaxOrderCount(total);
         ExceptionModule.checkOnlyDrink(menuName);
 
-        return makeOrder(menuName, count);
-    }
-
-    private Order makeOrder(List<String> menuName, List<Integer> count) {
-        Order order = new Order();
-
-        for (int i = 0; i < menuName.size(); i++) {
-            Menu menu = Menu.nameOf(menuName.get(i));
-            menu.order(count.get(i));
-            order.getOrderMenu().add(menu);
-        }
-
-        return order;
+        return new Order(menuName, count);
     }
 
     public void checkMenuName(List<String> menu, String text) throws IllegalArgumentException{
