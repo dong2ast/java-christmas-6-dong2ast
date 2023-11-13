@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SplitModule {
 
-    private final List<String> menuType = List.of(
+    private final List<String> MENU_NAME = List.of(
             "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림", "제로콜라", "레드와인", "샴페인"
     );
 
@@ -44,7 +44,7 @@ public class SplitModule {
     }
 
     public void checkMenuName(List<String> menu, String text) throws IllegalArgumentException{
-        if (!menuType.contains(text)){
+        if (!MENU_NAME.contains(text)){
             throw new IllegalArgumentException(ErrorStatus.NO_MENU_ERROR.getMessage());
         }
         if (menu.contains(text)) {
