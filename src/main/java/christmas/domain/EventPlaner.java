@@ -1,11 +1,11 @@
 package christmas.domain;
 
+import static christmas.domain.Constant.CHRISTMAS_EVENT_BASE_PRICE;
+
 import christmas.Enum.Badge;
 import christmas.Enum.Event;
 
 public class EventPlaner {
-
-    private final int CHRISTMAS_EVENT_BASE_PRICE = 1000;
 
     public EventPlaner(Order order, EventTargetChecker eventTargetChecker) {
         calculateChristmasEvent(order, eventTargetChecker);

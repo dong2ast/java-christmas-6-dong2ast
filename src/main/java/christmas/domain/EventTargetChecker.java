@@ -1,17 +1,17 @@
 package christmas.domain;
 
+import static christmas.domain.Constant.CHRISTMAS_DAY;
+import static christmas.domain.Constant.EVENT_MONTH;
+import static christmas.domain.Constant.EVENT_YEAR;
+import static christmas.domain.Constant.FREEBIE_PRICE;
+import static christmas.domain.Constant.MIN_EVENT_ORDER_PRICE;
+
 import christmas.Enum.Event;
 import christmas.Enum.Menu;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class EventTargetChecker {
-    private final int EVENT_YEAR = 2023;
-    private final int EVENT_MONTH = 12;
-    private final int CHRISTMAS_DAY = 25;
-    private final int FREEBIE_PRICE = 120000;
-    private final int MIN_EVENT_ORDER_PRICE = 10000;
-
     private final LocalDate visitLocalDate;
 
     public EventTargetChecker(int visitDate, int discountBeforePrice) {
