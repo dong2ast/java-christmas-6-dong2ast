@@ -60,6 +60,21 @@ public class SplitModuleTest extends NsTest {
         });
     }
 
+    @DisplayName("주문 개수가 숫자 1 이상이 아닌 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "해산물파스타-0,초코케이크-1", "해산물파스타-2,초코케이크-00", "해산물파스타-@,초코케이크-1"
+    })
+    void checkMenuCount(String input) {
+        assertSimpleTest(() -> {
+            runException(
+                    VISIT_DATE,
+                    input
+            );
+            assertThat(output()).contains(ErrorStatus.ORDER_COUNT_ERROR.getMessage());
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
