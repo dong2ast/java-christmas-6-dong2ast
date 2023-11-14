@@ -24,13 +24,13 @@ public class SplitModule {
         return new Order(menuName, count);
     }
 
-    public void checkMenuDubAndExist(List<String> menu, String text) throws IllegalArgumentException{
+    private void checkMenuDubAndExist(List<String> menu, String text) throws IllegalArgumentException{
         ExceptionModule.checkMenuExist(text);
         ExceptionModule.checkMenuDub(menu, text);
         menu.add(text);
     }
 
-    public void checkCount(List<Integer> count, String text) throws IllegalArgumentException{
+    private void checkCount(List<Integer> count, String text) throws IllegalArgumentException{
         Integer parseCount = ExceptionModule.checkOrderParseIntException(text);
         ExceptionModule.checkOrderCount(parseCount);
         count.add(parseCount);
