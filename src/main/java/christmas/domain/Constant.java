@@ -1,7 +1,6 @@
 package christmas.domain;
 
 public final class Constant {
-    private Constant() {}
 
     public static final int CHRISTMAS_EVENT_BASE_PRICE = 1000;
     public static final int EVENT_YEAR = 2023;
@@ -14,4 +13,5 @@ public final class Constant {
     public static final int MAX_ORDER = 20;
     public static final int MIN_DATE = 1;
     public static final int MAX_DATE = 31;
+    private Constant() {}
 }
