@@ -1,5 +1,8 @@
 package christmas.service;
 
+import static christmas.util.ExceptionModule.checkDayParseIntException;
+import static christmas.util.ExceptionModule.checkNumBoundary;
+
 import christmas.domain.Order;
 import christmas.util.interact.InputView;
 import christmas.util.interact.SplitModule;
@@ -16,7 +19,9 @@ public class InputService {
     public int getVisitDate() {
         while (true) {
             try {
-                return inputView.readDate();
+                Integer date = checkDayParseIntException(inputView.readDate());
+                checkNumBoundary(date);
+                return date;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
