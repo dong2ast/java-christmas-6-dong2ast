@@ -21,7 +21,7 @@ public class ExceptionModule {
 
     private static final String INPUT_FORMAT = "^([ㄱ-ㅎ|가-힣])+-\\d([, ][ㄱ-ㅎ|가-힣]+-\\d)*";
 
-    public static Integer checkDayParseIntException(String consoleRead) throws IllegalArgumentException{
+    public static Integer checkDayParseIntException(String consoleRead) {
         try {
             return Integer.parseInt(consoleRead);
         } catch (NumberFormatException e) {
@@ -29,7 +29,7 @@ public class ExceptionModule {
         }
     }
 
-    public static Integer checkOrderParseIntException(String consoleRead) throws IllegalArgumentException{
+    public static Integer checkOrderParseIntException(String consoleRead){
         try {
             return Integer.parseInt(consoleRead);
         } catch (NumberFormatException e) {
@@ -37,7 +37,7 @@ public class ExceptionModule {
         }
     }
 
-    public static void checkNumBoundary(Integer num) throws IllegalArgumentException{
+    public static void checkNumBoundary(Integer num) {
         if (num < MIN_DATE || num > MAX_DATE) {
             throw new IllegalArgumentException(ErrorStatus.DATE_BOUNDARY_ERROR.getMessage());
         }

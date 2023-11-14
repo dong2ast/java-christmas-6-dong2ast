@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SplitModule {
 
-    public Order splitMenuAndCount(String readOrder) throws IllegalArgumentException {
+    public Order splitMenuAndCount(String readOrder){
         List<String> menuName = new ArrayList<>();
         List<Integer> count = new ArrayList<>();
 
@@ -31,13 +31,13 @@ public class SplitModule {
         checkCount(count, split[1]);
     }
 
-    private void checkMenuDubAndExist(List<String> menu, String text) throws IllegalArgumentException{
+    private void checkMenuDubAndExist(List<String> menu, String text){
         ExceptionModule.checkMenuExist(text);
         ExceptionModule.checkMenuDub(menu, text);
         menu.add(text);
     }
 
-    private void checkCount(List<Integer> count, String text) throws IllegalArgumentException{
+    private void checkCount(List<Integer> count, String text){
         Integer parseCount = ExceptionModule.checkOrderParseIntException(text);
         ExceptionModule.checkOrderCount(parseCount);
         count.add(parseCount);
