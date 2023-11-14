@@ -57,8 +57,4 @@ public class EventTargetChecker {
             Menu.FREEBIE.order(1);
         }
     }
-
-    public int getDay() {
-        return this.visitLocalDate.getDayOfMonth()-1;
-    }
 }

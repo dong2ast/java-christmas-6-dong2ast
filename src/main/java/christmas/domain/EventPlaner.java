@@ -7,20 +7,20 @@ import christmas.Enum.Event;
 
 public class EventPlaner {
 
-    public EventPlaner(Order order, EventTargetChecker eventTargetChecker) {
-        calculateChristmasEvent(order, eventTargetChecker);
+    public EventPlaner(Order order, int visitDate) {
+        calculateChristmasEvent(order, visitDate);
         calculateWeekdayAndWeekendEvent(order);
         calculateSpecialEvent(order);
         calculateFreebieEvent(order);
         calculateBadge(order);
     }
 
-    private void calculateChristmasEvent(Order order, EventTargetChecker eventTargetChecker) {
+    private void calculateChristmasEvent(Order order, int visitDate) {
         if (!Event.CHRISTMAS.getCheck()) {
             return;
         }
         order.addEventStatus(Event.CHRISTMAS,
-                CHRISTMAS_EVENT_BASE_PRICE + eventTargetChecker.getDay() * Event.CHRISTMAS.getRate());
+                CHRISTMAS_EVENT_BASE_PRICE + visitDate * Event.CHRISTMAS.getRate());
     }
 
     private void calculateWeekdayAndWeekendEvent(Order order) {
