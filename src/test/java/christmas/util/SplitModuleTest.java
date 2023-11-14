@@ -90,6 +90,21 @@ public class SplitModuleTest extends NsTest {
         });
     }
 
+    @DisplayName("음료수만 주문한 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "제로콜라-1,샴페인-1", "제로콜라-1", "제로콜라-1,샴페인-1,레드와인-1"
+    })
+    void checkOnlyDrink(String input) {
+        assertSimpleTest(() -> {
+            runException(
+                    VISIT_DATE,
+                    input
+            );
+            assertThat(output()).contains(ErrorStatus.ONLY_DRINK_ERROR.getMessage());
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
