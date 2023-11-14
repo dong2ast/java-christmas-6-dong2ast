@@ -21,7 +21,7 @@ public class EventController {
         int visitDate = inputService.getVisitDate();
         Order order = inputService.getOrder();
 
-        EventTargetChecker eventTargetChecker = new EventTargetChecker(visitDate, order.getDiscountBeforePrice());
+        EventTargetChecker eventTargetChecker = new EventTargetChecker(visitDate, order.calculateDiscountBeforePrice());
         new EventPlaner(order, eventTargetChecker);
 
         outputView.printOrder(order, visitDate);

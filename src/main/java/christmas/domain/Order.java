@@ -4,10 +4,13 @@ import christmas.Enum.Badge;
 import christmas.Enum.Event;
 import christmas.Enum.Menu;
 import christmas.Enum.MenuType;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Order {
+    private final DecimalFormat decimalFormat = new DecimalFormat("###,###");
     private final List<Menu> orderMenu = new ArrayList<>();
     private final List<Event> event = new ArrayList<>();
     private int discountBeforePrice;
@@ -21,18 +24,14 @@ public class Order {
             menu.order(count.get(i));
             this.orderMenu.add(menu);
         }
-        calculateDiscountBeforePrice();
     }
 
-    public List<Menu> getOrderMenu() {
-        return orderMenu;
-    }
-
-    private void calculateDiscountBeforePrice() {
+    public int calculateDiscountBeforePrice() {
         for (Menu menu : orderMenu) {
             this.discountBeforePrice += (menu.getPrice() * menu.getOrderCount());
         }
         this.paymentPrice = discountBeforePrice;
+        return discountBeforePrice;
     }
 
     public void addEventStatus(Event event, int price) {
@@ -51,24 +50,38 @@ public class Order {
         event.changeRate(price);
     }
 
-    public int getDiscountBeforePrice() {
-        return discountBeforePrice;
+    public List<String> printOrderMenu() {
+        return orderMenu.stream().map(m -> m.getName() + " " + m.getOrderCount() + "개").collect(Collectors.toList());
     }
 
-    public List<Event> getEvent() {
-        return event;
+    public String printDiscountBeforePrice() {
+        return decimalFormat.format(discountBeforePrice) + "원";
     }
 
-    public int getEventPrice() {
-        return eventPrice;
+    public List<String> printEvent() {
+        if (event.size() == 0) {
+            return List.of("없음");
+        }
+        return event.stream().map(e -> e.getTitle() + ": -" + decimalFormat.format(e.getRate()) + "원")
+                .collect(Collectors.toList());
     }
 
-    public int getPaymentPrice() {
-        return paymentPrice;
+    public String printEventPrice() {
+        if (eventPrice == 0) {
+            return "0원";
+        }
+        return "-" + decimalFormat.format(eventPrice) + "원";
     }
 
-    public Badge getBadge() {
-        return badge;
+    public String printPaymentPrice() {
+        return decimalFormat.format(paymentPrice) + "원";
+    }
+
+    public String printBadge() {
+        if (badge == null) {
+            return "없음";
+        }
+        return badge.getTitle();
     }
 
     public void changeBadge(Badge badge) {
