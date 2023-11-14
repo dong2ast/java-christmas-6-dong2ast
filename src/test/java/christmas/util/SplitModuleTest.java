@@ -20,7 +20,7 @@ public class SplitModuleTest extends NsTest {
             "해산물파스타-2,초코케이크-1-", "-해산물파스타-2,초코케이크-1", "-해산물파스타-2-", "-", "-,-", "-, ", " "
             , "해산물파스타-2,,,,", "치즈뿌린감자튀김" ,"\n", "1-해산물파스타,2-초코케이크", "1-1", "감-자", "@-@"
     })
-    void checkIllegalFormat(String input) {
+    void Check_Illegal_Format(String input) {
         assertSimpleTest(() -> {
             runException(
                     VISIT_DATE,
@@ -35,7 +35,7 @@ public class SplitModuleTest extends NsTest {
     @ValueSource(strings = {
             "해산물파스타-2,해산물파스타-1", "초코케이크-1,초코케이크-1"
     })
-    void checkMenuDub(String input) {
+    void Check_Menu_Dub(String input) {
         assertSimpleTest(() -> {
             runException(
                     VISIT_DATE,
@@ -50,7 +50,7 @@ public class SplitModuleTest extends NsTest {
     @ValueSource(strings = {
             "감자튀김-2,해산물파스타-1", "초코케이크-1,페퍼로니피자-1"
     })
-    void checkMenuExist(String input) {
+    void Check_Menu_Exist(String input) {
         assertSimpleTest(() -> {
             runException(
                     VISIT_DATE,
@@ -65,7 +65,7 @@ public class SplitModuleTest extends NsTest {
     @ValueSource(strings = {
             "해산물파스타-0,초코케이크-1", "해산물파스타-2,초코케이크-00", "해산물파스타-@,초코케이크-1"
     })
-    void checkMenuCount(String input) {
+    void Check_Menu_Count(String input) {
         assertSimpleTest(() -> {
             runException(
                     VISIT_DATE,
@@ -80,7 +80,7 @@ public class SplitModuleTest extends NsTest {
     @ValueSource(strings = {
             "해산물파스타-21", "해산물파스타-1,초코케이크-20", "해산물파스타-15,초코케이크-15"
     })
-    void checkMaxOrderCount(String input) {
+    void Check_Max_Order_Count(String input) {
         assertSimpleTest(() -> {
             runException(
                     VISIT_DATE,
@@ -95,7 +95,7 @@ public class SplitModuleTest extends NsTest {
     @ValueSource(strings = {
             "제로콜라-1,샴페인-1", "제로콜라-1", "제로콜라-1,샴페인-1,레드와인-1"
     })
-    void checkOnlyDrink(String input) {
+    void Check_Only_Drink(String input) {
         assertSimpleTest(() -> {
             runException(
                     VISIT_DATE,
