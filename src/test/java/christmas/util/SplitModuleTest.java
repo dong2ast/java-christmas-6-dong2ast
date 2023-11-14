@@ -45,6 +45,21 @@ public class SplitModuleTest extends NsTest {
         });
     }
 
+    @DisplayName("메뉴판에 없는 메뉴를 입력했을 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "감자튀김-2,해산물파스타-1", "초코케이크-1,페퍼로니피자-1"
+    })
+    void checkMenuExist(String input) {
+        assertSimpleTest(() -> {
+            runException(
+                    VISIT_DATE,
+                    input
+            );
+            assertThat(output()).contains(ErrorStatus.NO_MENU_ERROR.getMessage());
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
