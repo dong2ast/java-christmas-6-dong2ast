@@ -30,6 +30,21 @@ public class SplitModuleTest extends NsTest {
         });
     }
 
+    @DisplayName("중복된 메뉴를 입력했을 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "해산물파스타-2,해산물파스타-1", "초코케이크-1,초코케이크-1"
+    })
+    void checkMenuDub(String input) {
+        assertSimpleTest(() -> {
+            runException(
+                    VISIT_DATE,
+                    input
+            );
+            assertThat(output()).contains(ErrorStatus.MENU_DUP_ERROR.getMessage());
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
