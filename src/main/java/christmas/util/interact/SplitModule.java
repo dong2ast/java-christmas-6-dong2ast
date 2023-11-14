@@ -38,7 +38,7 @@ public class SplitModule {
     }
 
     private void checkCount(List<Integer> count, String text){
-        Integer parseCount = ExceptionModule.checkOrderParseIntException(text);
+        int parseCount = Integer.parseInt(text);
         ExceptionModule.checkOrderCount(parseCount);
         count.add(parseCount);
     }

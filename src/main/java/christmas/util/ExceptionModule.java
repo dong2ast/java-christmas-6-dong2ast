@@ -29,14 +29,6 @@ public class ExceptionModule {
         }
     }
 
-    public static Integer checkOrderParseIntException(String consoleRead){
-        try {
-            return Integer.parseInt(consoleRead);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorStatus.ORDER_PARSE_INT_ERROR.getMessage());
-        }
-    }
-
     public static void checkNumBoundary(Integer num) {
         if (num < MIN_DATE || num > MAX_DATE) {
             throw new IllegalArgumentException(ErrorStatus.DATE_BOUNDARY_ERROR.getMessage());
