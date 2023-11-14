@@ -78,4 +78,10 @@ public class ExceptionModule {
             throw new IllegalArgumentException(ErrorStatus.ILLEGAL_FORMAT_ERROR.getMessage());
         }
     }
+
+    public static void checkBlank(String[] s) {
+        if (s.length < 1) {
+            throw new IllegalArgumentException(ErrorStatus.ILLEGAL_FORMAT_ERROR.getMessage());
+        }
+    }
 }
