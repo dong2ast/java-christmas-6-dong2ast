@@ -75,6 +75,21 @@ public class SplitModuleTest extends NsTest {
         });
     }
 
+    @DisplayName("주문 개수의 총 합이 20을 넘어가는 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "해산물파스타-21", "해산물파스타-1,초코케이크-20", "해산물파스타-15,초코케이크-15"
+    })
+    void checkMaxOrderCount(String input) {
+        assertSimpleTest(() -> {
+            runException(
+                    VISIT_DATE,
+                    input
+            );
+            assertThat(output()).contains(ErrorStatus.OVER_MAX_ORDER_ERROR.getMessage());
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
