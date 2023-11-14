@@ -3,7 +3,6 @@ package christmas.service;
 import christmas.domain.Order;
 import christmas.util.interact.InputView;
 import christmas.util.interact.SplitModule;
-import java.util.List;
 
 public class InputService {
     private final InputView inputView;
@@ -27,7 +26,7 @@ public class InputService {
     public Order getOrder() {
         while (true) {
             try {
-                List<String> readOrder = inputView.readOrder();
+                String readOrder = inputView.readOrder();
                 return splitModule.splitMenuAndCount(readOrder);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

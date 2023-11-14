@@ -3,16 +3,20 @@ package christmas.util.interact;
 import christmas.domain.Order;
 import christmas.util.ExceptionModule;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SplitModule {
 
-    public Order splitMenuAndCount(List<String> splitOrder) throws IllegalArgumentException {
+    public Order splitMenuAndCount(String readOrder) throws IllegalArgumentException {
         List<String> menuName = new ArrayList<>();
         List<Integer> count = new ArrayList<>();
 
+        ExceptionModule.checkFormat(readOrder);
+        List<String> splitOrder = Arrays.stream(readOrder.split(",")).toList();
+
         for (String s : splitOrder) {
-            checkInput(menuName, count, s);
+            checkMenu(menuName, count, s);
         }
 
         ExceptionModule.checkMaxOrderCount(count);
@@ -21,17 +25,10 @@ public class SplitModule {
         return new Order(menuName, count);
     }
 
-    private void checkInput(List<String> menuName, List<Integer> count, String s) {
-        String[] split = checkFormat(s);
+    private void checkMenu(List<String> menuName, List<Integer> count, String s) {
+        String[] split = s.split("-");
         checkMenuDubAndExist(menuName, split[0]);
         checkCount(count, split[1]);
-    }
-
-    private static String[] checkFormat(String s) {
-        ExceptionModule.checkHyphen(s);
-        String[] split = s.split("-");
-        ExceptionModule.checkBlank(split);
-        return split;
     }
 
     private void checkMenuDubAndExist(List<String> menu, String text) throws IllegalArgumentException{

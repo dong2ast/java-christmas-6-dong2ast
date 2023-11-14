@@ -3,8 +3,6 @@ package christmas.util.interact;
 import static christmas.util.ExceptionModule.*;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Arrays;
-import java.util.List;
 
 public class InputView {
 
@@ -17,9 +15,9 @@ public class InputView {
         return date;
     }
 
-    public List<String> readOrder() throws IllegalArgumentException{
+    public String readOrder() throws IllegalArgumentException{
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
 
-        return Arrays.stream(Console.readLine().split(",")).toList();
+        return Console.readLine();
     }
 }

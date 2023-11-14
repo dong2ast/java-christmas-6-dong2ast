@@ -7,6 +7,7 @@ import static christmas.domain.Constant.MIN_ORDER;
 
 import christmas.Enum.common.ErrorStatus;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ExceptionModule {
 
@@ -17,6 +18,8 @@ public class ExceptionModule {
     private static final List<String> MENU_NAME = List.of(
             "양송이수프", "타파스", "시저샐러드", "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림", "제로콜라", "레드와인", "샴페인"
     );
+
+    private static final String INPUT_FORMAT = "^([ㄱ-ㅎ|가-힣])+-\\d([, ][ㄱ-ㅎ|가-힣]+-\\d)*";
 
     public static Integer checkDayParseIntException(String consoleRead) throws IllegalArgumentException{
         try {
@@ -73,14 +76,8 @@ public class ExceptionModule {
         throw new IllegalArgumentException(ErrorStatus.ONLY_DRINK_ERROR.getMessage());
     }
 
-    public static void checkHyphen(String s) {
-        if (s.chars().filter(t -> t == '-').count() != 1) {
-            throw new IllegalArgumentException(ErrorStatus.ILLEGAL_FORMAT_ERROR.getMessage());
-        }
-    }
-
-    public static void checkBlank(String[] s) {
-        if (s.length < 1) {
+    public static void checkFormat(String s) {
+        if (!Pattern.matches(INPUT_FORMAT, s)) {
             throw new IllegalArgumentException(ErrorStatus.ILLEGAL_FORMAT_ERROR.getMessage());
         }
     }
