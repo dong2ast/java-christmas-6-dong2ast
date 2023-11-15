@@ -29,8 +29,8 @@ public enum Event {
 
     public boolean getCheck() { return check; }
 
-    public void check() {
-        this.check = true;
+    public void check(boolean check) {
+        this.check = check;
     }
 
     public void changeRate(Integer rate) { this.rate = rate; }

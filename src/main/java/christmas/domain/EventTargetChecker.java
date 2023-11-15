@@ -30,7 +30,7 @@ public class EventTargetChecker {
 
     private void checkChristmasEvent(int visitDate) {
         if (visitDate <= CHRISTMAS_DAY) {
-            Event.CHRISTMAS.check();
+            Event.CHRISTMAS.check(true);
         }
     }
 
@@ -38,22 +38,22 @@ public class EventTargetChecker {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
 
         if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
-            Event.WEEKEND.check();
+            Event.WEEKEND.check(true);
         }
-        Event.WEEKDAY.check();
+        Event.WEEKDAY.check(true);
     }
 
     private void checkSpecialEvent() {
         DayOfWeek dayOfWeek = visitLocalDate.getDayOfWeek();
 
         if (visitLocalDate.getDayOfMonth() == CHRISTMAS_DAY || dayOfWeek == DayOfWeek.SUNDAY) {
-            Event.SPECIAL.check();
+            Event.SPECIAL.check(true);
         }
     }
 
     private void checkFreebieEvent(int discountBeforePrice) {
         if (discountBeforePrice >= FREEBIE_PRICE) {
-            Event.FREEBIE.check();
+            Event.FREEBIE.check(true);
             Menu.FREEBIE.order(1);
         }
     }
