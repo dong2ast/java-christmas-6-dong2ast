@@ -39,10 +39,23 @@ public class OrderTest {
             totalCount += count.get(i) * menu.get(i).getPrice();
         }
 
-        // given&when
+        //when
         int calculateDiscountBeforePrice = order.calculateDiscountBeforePrice();
 
         //then
         Assertions.assertThat(calculateDiscountBeforePrice).isEqualTo(totalCount);
+    }
+
+    @DisplayName("주문 메뉴 출력 테스트")
+    @Test()
+    public void Print_Order_Menu() {
+        //given
+        List<String> target = menu.stream().map(m -> m.getName() + " " + m.getOrderCount() + "개").toList();
+
+        //when
+        List<String> orderMenu = order.printOrderMenu();
+
+        //then
+        Assertions.assertThat(orderMenu).isEqualTo(target);
     }
 }
