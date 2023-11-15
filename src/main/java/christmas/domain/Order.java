@@ -51,7 +51,7 @@ public class Order {
     }
 
     public List<String> printOrderMenu() {
-        return orderMenu.stream().map(m -> m.getName() + " " + m.getOrderCount() + "개").collect(Collectors.toList());
+        return orderMenu.stream().map(m -> m.getName() + " " + m.getOrderCount() + "개").toList();
     }
 
     public String printDiscountBeforePrice() {
