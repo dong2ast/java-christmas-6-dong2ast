@@ -39,6 +39,7 @@ public class EventTargetChecker {
 
         if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
             Event.WEEKEND.check(true);
+            return;
         }
         Event.WEEKDAY.check(true);
     }
