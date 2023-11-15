@@ -30,4 +30,19 @@ public class OrderTest {
         Assertions.assertThat(orderCount).usingRecursiveComparison().isEqualTo(count);
     }
 
+    @DisplayName("할인 전 총 주문금액 계산 테스트")
+    @Test()
+    public void Discount_Before_Price() {
+        //given
+        int totalCount = 0;
+        for (int i = 0; i < menu.size(); i++) {
+            totalCount += count.get(i) * menu.get(i).getPrice();
+        }
+
+        // given&when
+        int calculateDiscountBeforePrice = order.calculateDiscountBeforePrice();
+
+        //then
+        Assertions.assertThat(calculateDiscountBeforePrice).isEqualTo(totalCount);
+    }
 }
