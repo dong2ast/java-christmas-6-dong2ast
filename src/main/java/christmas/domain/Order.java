@@ -85,7 +85,7 @@ public class Order {
     }
 
     public void changeBadge(Badge badge) {
-        if (badge.getBenefit() < this.eventPrice) {
+        if (badge.getBenefit() <= this.eventPrice) {
             this.badge = badge;
         }
     }
