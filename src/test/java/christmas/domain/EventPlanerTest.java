@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.Enum.Badge;
 import christmas.Enum.Event;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -49,4 +50,32 @@ public class EventPlanerTest {
         );
     }
 
+    @DisplayName("배지 변경 테스트")
+    @ParameterizedTest(name = "{index} : 입력 이벤트 = {0}, 혜택 = {1}, 배지 = {2}")
+    @MethodSource("argumentsForChangeBadge")
+    public void Change_Badge(Event event, int price, Badge badge) {
+        //given
+        order.addEventStatus(event, price);
+
+        //when
+        order.changeBadge(Badge.STAR);
+        order.changeBadge(Badge.TREE);
+        order.changeBadge(Badge.SANTA);
+        String printBadge = order.printBadge();
+
+        //then
+        Assertions.assertThat(printBadge).isEqualTo(badge.getTitle());
+    }
+    private static Stream<Arguments> argumentsForChangeBadge() {
+        return Stream.of(
+                Arguments.of(Event.WEEKEND, 0, Badge.NONE),
+                Arguments.of(Event.WEEKEND, 2500, Badge.NONE),
+                Arguments.of(Event.WEEKEND, 5000, Badge.STAR),
+                Arguments.of(Event.WEEKEND, 7500, Badge.STAR),
+                Arguments.of(Event.WEEKEND, 10000, Badge.TREE),
+                Arguments.of(Event.WEEKEND, 15000, Badge.TREE),
+                Arguments.of(Event.WEEKEND, 20000, Badge.SANTA),
+                Arguments.of(Event.WEEKEND, 30000, Badge.SANTA)
+        );
+    }
 }
